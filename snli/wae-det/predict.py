@@ -28,6 +28,7 @@ from sklearn.model_selection import train_test_split
 np.random.seed(1337)
 
 if Path('./x_test.pickle').exists():
+    print('[INFO] Loading x_test from pickle file...')
     with open('x_test.pickle', 'rb') as handle:
         x_test = pickle.load(handle)
 else:
