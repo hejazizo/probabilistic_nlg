@@ -31,6 +31,8 @@ if Path('./x_test.pickle').exists():
     print('[INFO] Loading x_test from pickle file...')
     with open('x_test.pickle', 'rb') as handle:
         x_test = pickle.load(handle)
+    with open('word_index.pickle', 'rb') as handle:
+        word_index = pickle.load(handle)
 else:
     snli_data = utils.get_sentences(file_path = config['data'])
 
@@ -54,6 +56,8 @@ else:
     # dump x_test for next run
     with open('x_test.pickle', 'wb') as handle:
         pickle.dump(x_test, handle)
+    with open('word_index.pickle', 'wb') as handle:
+        pickle.dump(word_index, handle)
 
 w2v = config['w2v_file']
 embeddings_matrix = utils.create_embedding_matrix(word_index,
