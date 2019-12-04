@@ -23,7 +23,7 @@ import utils
 from vae import VAEModel
 from sklearn.model_selection import train_test_split
 
-np.random.seed(1337)
+'''np.random.seed(1337)
 
 snli_data = utils.get_sentences(file_path = config['data'])
 
@@ -33,13 +33,16 @@ sentences = [s.strip() for s in snli_data]
 
 np.random.shuffle(sentences)
 
-print('[INFO] Tokenizing input and output sequences')
+print('[INFO] Tokenizing input and output sequences')'''
 filters = '!"#$%&()*+/:;<=>@[\\]^`{|}~\t\n'
 x, word_index = utils.tokenize_sequence(sentences,
                                              filters,
                                              config['num_tokens'],
                                              config['vocab_size'])
 
+print("HIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
+
+'''
 print('[INFO] Split data into train-validation-test sets')
 x_train, _x_val_test = train_test_split(x, test_size = 0.1, random_state = 10)
 x_val, x_test = train_test_split(_x_val_test, test_size = 0.5, random_state = 10)
@@ -64,3 +67,4 @@ gl.log_writer.close()
 
 #----------------------------------------------------------------#
 
+'''

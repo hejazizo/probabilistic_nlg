@@ -7,5 +7,3 @@ def run_path_setup():
     script_path = os.getcwd()
     sys.path.append(script_path)
     sys.path.append(str(Path(script_path).parents[0]))
-print('hi')
-print('bye')
