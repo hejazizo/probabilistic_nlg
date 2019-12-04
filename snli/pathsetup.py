@@ -8,3 +8,4 @@ def run_path_setup():
     sys.path.append(script_path)
     sys.path.append(str(Path(script_path).parents[0]))
 print('hi')
+print('bye')
