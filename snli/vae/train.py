@@ -42,7 +42,9 @@ x, word_index = utils.tokenize_sequence(sentences,
                                              config['num_tokens'],
                                              config['vocab_size'])
 
-print("HIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
+print(x)
+
+print(word_index)
 
 '''
 print('[INFO] Split data into train-validation-test sets')
