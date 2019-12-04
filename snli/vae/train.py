@@ -42,9 +42,16 @@ x, word_index = utils.tokenize_sequence(sentences,
                                              config['num_tokens'],
                                              config['vocab_size'])
 
-print(x)
+for t in x:
+    print(t)
 
-print(word_index)
+print('\n\n\n\n')
+
+
+for w in word_index:
+    print(w)
+
+print('\n\n\n\n')
 
 '''
 print('[INFO] Split data into train-validation-test sets')
