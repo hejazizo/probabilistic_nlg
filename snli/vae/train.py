@@ -34,6 +34,8 @@ sentences = [s.strip() for s in snli_data]
 np.random.shuffle(sentences)
 
 print('[INFO] Tokenizing input and output sequences')'''
+
+sentences="Hellllllllllo! Go to hellllll!"
 filters = '!"#$%&()*+/:;<=>@[\\]^`{|}~\t\n'
 x, word_index = utils.tokenize_sequence(sentences,
                                              filters,
