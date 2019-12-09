@@ -1,5 +1,5 @@
-print("HIIIII Shiva let's do it")
 
+print("hi")
 from pathsetup import run_path_setup
 run_path_setup()
 
