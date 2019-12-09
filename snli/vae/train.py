@@ -1,3 +1,5 @@
+print("HIIIII Shiva let's do it")
+
 from pathsetup import run_path_setup
 run_path_setup()
 
