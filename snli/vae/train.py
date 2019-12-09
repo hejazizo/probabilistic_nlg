@@ -1,5 +1,4 @@
 
-print("hi")
 from pathsetup import run_path_setup
 run_path_setup()
 
@@ -44,18 +43,9 @@ x, word_index = utils.tokenize_sequence(sentences,
                                              config['num_tokens'],
                                              config['vocab_size'])
 
-for t in x:
-    print(t)
-
-print('\n\n\n\n')
 
 
-for w in word_index:
-    print(w)
 
-print('\n\n\n\n')
-
-'''
 print('[INFO] Split data into train-validation-test sets')
 x_train, _x_val_test = train_test_split(x, test_size = 0.1, random_state = 10)
 x_val, x_test = train_test_split(_x_val_test, test_size = 0.5, random_state = 10)
@@ -79,5 +69,3 @@ model.train(x_train, x_val)
 gl.log_writer.close()
 
 #----------------------------------------------------------------#
-
-'''
