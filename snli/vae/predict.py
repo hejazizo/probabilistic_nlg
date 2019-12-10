@@ -86,7 +86,7 @@ print('-'*100)
 
 print("[INFO] Generate samples from the latent space ...")
 model.random_sample(checkpoint)
-model.random_sample_save(checkpoint, num_batches=3)
+model.random_sample_save(checkpoint, num_batches=781)
 
 print('-'*100)
 #----------------------------------------------------------------#
