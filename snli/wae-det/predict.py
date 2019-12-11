@@ -92,7 +92,7 @@ print('-'*100)
 print("[INFO] Generate with test set input ...")
 generated = ''
 for pred in preds[:10]:
-    generated += '\t\t' + ' '.join([model.idx_word[i] for i in pred if i not in [model.pad, model.eos]]) + '\n'
+    generated +=  '\t\t' + ' '.join([model.idx_word[i] for i in pred if i not in [model.pad, model.eos]]) + '\n'
 print(generated)
 
 print('-'*100)
@@ -100,7 +100,7 @@ print('-'*100)
 
 print("[INFO] Generate samples from the latent space ...")
 model.random_sample(checkpoint)
-model.random_sample_save(checkpoint, num_batches=3)
+model.random_sample_save(checkpoint, num_batches=782)
 
 print('-'*100)
 #----------------------------------------------------------------#

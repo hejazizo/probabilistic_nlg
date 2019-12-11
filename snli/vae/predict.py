@@ -1,3 +1,5 @@
+from pathlib import Path
+import pickle
 from pathsetup import run_path_setup
 run_path_setup()
 
@@ -26,24 +28,37 @@ from sklearn.model_selection import train_test_split
 
 np.random.seed(1337)
 
-snli_data = utils.get_sentences(file_path = config['data'])
+if Path('./x_test.pickle').exists():
+    print('[INFO] Loading x_test from pickle file...')
+    with open('x_test.pickle', 'rb') as handle:
+        x_test = pickle.load(handle)
+    with open('word_index.pickle', 'rb') as handle:
+        word_index = pickle.load(handle)
+else:
+    snli_data = utils.get_sentences(file_path = config['data'])
 
-print('[INFO] Number of sentences = {}'.format(len(snli_data)))
+    print('[INFO] Number of sentences = {}'.format(len(snli_data)))
 
-sentences = [s.strip() for s in snli_data]
+    sentences = [s.strip() for s in snli_data]
 
-np.random.shuffle(sentences)
+    np.random.shuffle(sentences)
 
-print('[INFO] Tokenizing input and output sequences')
-filters = '!"#$%&()*+/:;<=>@[\\]^`{|}~\t\n'
-x, word_index = utils.tokenize_sequence(sentences,
-                                             filters,
-                                             config['num_tokens'],
-                                             config['vocab_size'])
+    print('[INFO] Tokenizing input and output sequences')
+    filters = '!"#$%&()*+/:;<=>@[\\]^`{|}~\t\n'
+    x, word_index = utils.tokenize_sequence(sentences,
+                                                filters,
+                                                config['num_tokens'],
+                                                config['vocab_size'])
 
-print('[INFO] Split data into train-validation-test sets')
-x_train, _x_val_test = train_test_split(x, test_size = 0.1, random_state = 10)
-x_val, x_test = train_test_split(_x_val_test, test_size = 0.5, random_state = 10)
+    print('[INFO] Split data into train-validation-test sets')
+    x_train, _x_val_test = train_test_split(x, test_size = 0.1, random_state = 10)
+    x_val, x_test = train_test_split(_x_val_test, test_size = 0.5, random_state = 10)
+
+    # dump x_test for next run
+    with open('x_test.pickle', 'wb') as handle:
+        pickle.dump(x_test, handle)
+    with open('word_index.pickle', 'wb') as handle:
+        pickle.dump(word_index, handle)
 
 w2v = config['w2v_file']
 embeddings_matrix = utils.create_embedding_matrix(word_index,
@@ -86,7 +101,7 @@ print('-'*100)
 
 print("[INFO] Generate samples from the latent space ...")
 model.random_sample(checkpoint)
-model.random_sample_save(checkpoint, num_batches=3)
+model.random_sample_save(checkpoint, num_batches=782)
 
 print('-'*100)
 #----------------------------------------------------------------#
